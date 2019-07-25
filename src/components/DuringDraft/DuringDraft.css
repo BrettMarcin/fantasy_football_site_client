@@ -1,0 +1,9 @@
+#timeline {
+    flex-direction: row;
+    height: 80px;
+    overflow-x: scroll;
+}
+
+.pick-item {
+    width: 140px;
+}

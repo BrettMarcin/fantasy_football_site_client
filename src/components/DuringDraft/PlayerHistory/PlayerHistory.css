@@ -1,0 +1,9 @@
+.player-history-item{
+    margin: 0;
+    padding: 0;
+}
+
+#player-history {
+    overflow:hidden;
+    overflow-y:scroll
+}

@@ -1,0 +1,5 @@
+.ag-header-cell{
+    /*Force the width corresponding at how much width
+    we need once the text is layed out vertically*/
+    width: 10px;
+}
