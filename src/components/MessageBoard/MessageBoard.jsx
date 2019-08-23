@@ -32,7 +32,7 @@ class MessageBoard extends React.Component {
         this.client = new Client();
 
         this.client.configure({
-            brokerURL: 'ws://localhost:8000/draft-socket',
+            brokerURL: 'wss://'+ process.env.REACT_APP_STAGE +'/draft-socket',
             onConnect: () => {
                 // this.client.subscribe('/queue/now', message => {
                 //     console.log(message);

@@ -31,7 +31,7 @@ class Draft extends React.Component {
             if (res !== null && res !== undefined) {
                 this.client = new Client();
                 this.client.configure({
-                    brokerURL: 'ws://localhost:8000/draft-socket',
+                    brokerURL: 'wss://'+ process.env.REACT_APP_STAGE +'/draft-socket',
                     onConnect: () => {
                         this.client.subscribe('/draft/hasDraftEnded/'+this.props.match.params.id, message => {
                             var draftInfo = res

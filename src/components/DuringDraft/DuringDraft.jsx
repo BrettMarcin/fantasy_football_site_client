@@ -37,7 +37,7 @@ class DuringDraft extends React.Component {
         this.client = new Client();
 
         this.client.configure({
-            brokerURL: 'ws://localhost:8000/draft-socket',
+            brokerURL: 'wss://'+ process.env.REACT_APP_STAGE +'/draft-socket',
             onConnect: () => {
                 this.client.subscribe('/draft/timer/'+ this.state.draftId, message => {
                     var json = JSON.parse(message.body)

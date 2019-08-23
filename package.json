@@ -22,15 +22,16 @@
     "stompjs": "^2.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start_local": "REACT_APP_STAGE=localhost:8000 react-scripts start",
+    "build_local": "REACT_APP_STAGE=localhost:8000 react-scripts build",
+    "start_deploy": "REACT_APP_STAGE=fantasy-football-app-bzs2bh2dca-uc.a.run.app react-scripts start",
+    "build_deploy": "REACT_APP_STAGE=fantasy-football-app-bzs2bh2dca-uc.a.run.app react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:8000",
   "browserslist": {
     "production": [
       ">0.2%",

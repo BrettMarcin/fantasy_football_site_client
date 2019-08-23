@@ -6,6 +6,7 @@ import AuthService from '../AuthService'
 
 class Home extends React.Component {
     constructor(){
+        console.log()
         super();
         // this.handleChange = this.handleChange.bind(this);
         this.Auth = new AuthService();

@@ -5,6 +5,12 @@ export default class AuthService {
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
+
+        if (process.env.REACT_APP_STAGE === 'env') {
+
+        } else {
+
+        }
         this.state = {
             theUser : null
         }
@@ -15,7 +21,7 @@ export default class AuthService {
             usernameOrEmail: username,
             password : password
         }
-        return this.fetch(`/api/auth/signin`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/auth/signin', {
             method: 'POST',
             body: JSON.stringify(theUser)
         }).then(res => {
@@ -61,7 +67,7 @@ export default class AuthService {
 
     getProfile() {
         // Using jwt-decode npm package to decode the token
-        return this.fetch(`/api/getUser`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getUser', {
             method: 'GET'
         }).then(res => {
             this.profile = res;
@@ -71,7 +77,7 @@ export default class AuthService {
 
     getUserNames() {
         // Using jwt-decode npm package to decode the token
-        return this.fetch(`/api/getUserNames`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getUserNames', {
             method: 'GET'
         }).then(res => {
             return Promise.resolve(res);
@@ -80,7 +86,7 @@ export default class AuthService {
 
     createDraft(draft) {
         // Using jwt-decode npm package to decode the token
-        return this.fetch(`/api/createDraft`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/createDraft', {
                 method: 'POST',
                 body: JSON.stringify(draft)
             }).then(res => {
@@ -89,7 +95,7 @@ export default class AuthService {
     }
 
     getDrafts() {
-        return this.fetch(`/api/getDrafts`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getDrafts', {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -97,7 +103,7 @@ export default class AuthService {
     }
 
     getDraftInfo(id) {
-        return this.fetch(`/api/getDraftDetails/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getDraftDetails/' + id, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -105,7 +111,7 @@ export default class AuthService {
     }
 
     getUsersInDraft(id) {
-        return this.fetch(`/api/getUsersInADraft/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getUsersInADraft/' + id, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -113,7 +119,7 @@ export default class AuthService {
     }
 
     joinDraft(id) {
-        return this.fetch(`/api/joinDraft/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/joinDraft/' + id, {
                 method: 'POST'
             }).then(res => {
                 return Promise.resolve(res);
@@ -121,7 +127,7 @@ export default class AuthService {
     }
 
     startDraft(id) {
-        return this.fetch(`/api/startDraft/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/startDraft/' + id, {
                 method: 'POST'
             }).then(res => {
                 return Promise.resolve(res);
@@ -129,7 +135,7 @@ export default class AuthService {
     }
 
     getRemainingPicks(id) {
-        return this.fetch(`/api/getPicks/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getPicks/' + id, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -137,7 +143,7 @@ export default class AuthService {
     }
 
     getPlayersRemaining(id) {
-        return this.fetch(`/api/getPlayersRemaining/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getPlayersRemaining/' + id, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -145,7 +151,7 @@ export default class AuthService {
     }
 
     resumeDraft(id) {
-        return this.fetch(`/api/resumeDraft/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/resumeDraft/' + id, {
                 method: 'POST'
             }).then(res => {
                 return Promise.resolve(res);
@@ -153,7 +159,7 @@ export default class AuthService {
     }
 
     pickPlayer(id, pick) {
-        return this.fetch(`/api/pickPlayer/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/pickPlayer/' + id, {
                 method: 'POST',
                 body: JSON.stringify(pick)
             }).then(res => {
@@ -162,7 +168,7 @@ export default class AuthService {
     }
 
     getPickHistory(id) {
-        return this.fetch(`/api/getPickHistory/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getPickHistory/' + id, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -170,7 +176,7 @@ export default class AuthService {
     }
 
     getPlayersDuringDraft(id) {
-        return this.fetch(`/api/getPlayersDuringDraft/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getPlayersDuringDraft/' + id, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -178,7 +184,7 @@ export default class AuthService {
     }//getPlayersTeamDrafted
 
     getPlayersTeamDrafted(id, username) {
-        return this.fetch(`/api/getPlayersTeamDrafted/` + id + '?user=' + username, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getPlayersTeamDrafted/' + id + '?user=' + username, {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -186,7 +192,7 @@ export default class AuthService {
     }//
 
     getNumberOfNotification() {
-        return this.fetch(`/api/getNumberOfNotification/`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getNumberOfNotification/', {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -194,7 +200,7 @@ export default class AuthService {
     }//
 
     getNotifications() {
-        return this.fetch(`/api/getNotifications/`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/getNotifications/', {
                 method: 'GET'
             }).then(res => {
                 return Promise.resolve(res);
@@ -202,7 +208,7 @@ export default class AuthService {
     }
 
     deleteNotification(not) {
-        return this.fetch(`/api/deleteNotification`, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/deleteNotification', {
                 method: 'POST',
                 body: JSON.stringify(not)
             }).then(res => {
@@ -211,9 +217,17 @@ export default class AuthService {
     }
 
     deleteDraft(id) {
-        console.log(id)
-        return this.fetch(`/api/deleteDraft/` + id, {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/deleteDraft/' + id, {
                 method: 'GET'
+            }).then(res => {
+                return Promise.resolve(res);
+    })
+    }
+
+    signup(user) {
+        return this.fetch('https://' + process.env.REACT_APP_STAGE + '/api/auth/signup', {
+                method: 'POST',
+                body: JSON.stringify(user)
             }).then(res => {
                 return Promise.resolve(res);
     })

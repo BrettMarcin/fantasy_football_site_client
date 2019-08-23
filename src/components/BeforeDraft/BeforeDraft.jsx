@@ -61,7 +61,7 @@ class BeforeDraft extends React.Component {
         this.client = new Client();
 
         this.client.configure({
-            brokerURL: 'ws://localhost:8000/draft-socket',
+            brokerURL: 'ws://'+ process.env.REACT_APP_STAGE +'/draft-socket',
             onConnect: () => {
                 this.client.subscribe('/draft/draftStarted/'+ this.state.draftInfo.id, message => {
                     window.location.reload();
